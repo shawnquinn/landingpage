@@ -1,6 +1,5 @@
 @import 'variables';
 @import 'mixins';
-
 /*
  * Globals
  */
@@ -10,6 +9,16 @@
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   -webkit-text-size-adjust: 100%;
+}
+/* Selection */
+::-moz-selection {
+  color: #fff;
+  background-color: $color-primary;
+}
+
+::selection {
+  color: #fff;
+  background-color: $color-primary;
 }
 /* Links */
 a,
@@ -37,13 +46,13 @@ html {
 }
 
 body {
+  font-family: $font-body;
   text-align: center;
   color: #fff;
-  text-shadow: 0 0.05rem 0.1rem rgba(0,0,0,0.5);
-  background: #fff url("../img/dsg-bg.jpg") center center no-repeat;
+  background: #fff url('img/dsg-bg.jpg') center center no-repeat;
   //background: #fff;
   background-size: cover;
-  font-family: $font-body;
+  text-shadow: 0 0.2rem 0.2rem rgba(0,0,0,.5);
 }
 /* Extra markup and styles for table-esque vertical and horizontal centering */
 .site-wrapper {
@@ -59,17 +68,17 @@ body {
 .site-wrapper-inner {
   display: table-cell;
   vertical-align: top;
-  &::before {
-    content: '';
-    background: rgba(#000,0.4);
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    z-index: 3;
-    display: block;
-    top: 0;
-  }
 
+  &::before {
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    content: '';
+    background: rgba(#000,.4);
+  }
 }
 
 .cover-container {
@@ -128,9 +137,15 @@ body {
  */
 .cover {
   padding: 0 1.5rem;
+
   &-heading {
     font-family: $font-header;
     letter-spacing: 1px;
+  }
+
+  &-logo {
+    width: 100px;
+    height: auto;
   }
 }
 
@@ -140,6 +155,7 @@ body {
       font-weight: bold;
       padding: 0.75rem 1.25rem;
     }
+
     &-large {
       &:hover {
         text-decoration: none;
@@ -187,23 +203,37 @@ body {
   }
 }
 
+.infinite-spin {
+  -webkit-animation: infinitespin 4s infinite linear;
+  animation: infinitespin 4s infinite linear;
+}
+@-webkit-keyframes infinitespin {
+  from {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  to {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
 canvas {
   display: block;
   vertical-align: bottom;
 }
-
 /* ---- particles.js container ---- */
-
 #particles-js {
   position: absolute;
   z-index: 3;
+  top: 0;
   width: 100%;
   height: 100%;
-  background-image: url("");
-  @include gradient(0deg, rgba(darken(#5EC1CC, 20%),0.2) 0%, rgba(#5EC1CC, 0.5) 50%);
-  //background-color: #5EC1CC;
+  background-image: url('');
+  //background-color: #5EC4
   background-repeat: no-repeat;
-  background-size: cover;
   background-position: 50% 50%;
-  top: 0;
+  background-size: cover;
+  @include gradient(0deg, rgba($color-primary,.7) 0%, rgba($color-secondary, .3) 50%);
 }
