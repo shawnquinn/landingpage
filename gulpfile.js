@@ -16,7 +16,7 @@
  *      9. Generates .pot file for i18n and l10n.
  *
  * @author Shawn Quinn (@shawnquinn)
- * @version 0.0.1
+ * @version 0.1.0
  */
 
 /**
@@ -26,6 +26,12 @@
  *
  * In paths you can add <<glob or array of globs>>. Edit the variables as per your project requirements.
  */
+
+ // Defining base pathes
+ var basePaths = {
+     jsVendor: './js/vendor/',
+     node: './node_modules/'
+ };
 
 // START Editing Project Variables.
 // Project related.
@@ -39,7 +45,11 @@ var styleDestination        = './'; // Path to place the compiled CSS file.
 // Default set to root folder.
 
 // JS Vendor related.
-var jsVendorSRC             = './js/vendor/*.js'; // Path to JS vendor folder.
+var jsVendorSRC             = [
+                            './js/vendor/*.js', // Path to JS vendor folder.
+                            basePaths.node + 'particle.js/particle.js' // Yummy particles
+];
+
 var jsVendorDestination     = './js/'; // Path to place the compiled JS vendors file.
 var jsVendorFile            = 'vendors'; // Compiled JS vendors file name.
 // Default set to vendors i.e. vendors.js.
@@ -195,7 +205,7 @@ gulp.task( 'browser-sync', function() {
 
     .pipe( filter( '**/*.css' ) ) // Filtering stream to only css files
     .pipe( browserSync.stream() )// Reloads style.min.css if that is enqueued.
-    .pipe( notify( { message: 'TASK: "styles" Completed! 💯🤓', onLast: true } ) )
+    .pipe( notify( { message: 'TASK: "styles" Completed! 🤓', onLast: true } ) )
  });
 
 
@@ -211,7 +221,23 @@ gulp.task( 'browser-sync', function() {
   *     4. Uglifes/Minifies the JS file and generates vendors.min.js
   */
  gulp.task( 'vendorsJs', function() {
-  gulp.src( jsVendorSRC )
+   var scripts = [
+
+       // Start - All BS4 stuff
+       basePaths.jsVendor + 'bootstrap.min.js',
+       // End - All BS4 stuff
+
+       basePaths.jsVendor + 'ie10-viewport-bug-workaround.js',
+
+       // Particles. Yum.
+       basePaths.jsVendor + 'particles.js',
+
+      //basePaths.jsVendor + 'materialize.min.js',
+
+
+   ];
+
+  gulp.src( scripts )
     .pipe( concat( jsVendorFile + '.js' ) )
     .pipe( lineec() ) // Consistent Line Endings for non UNIX systems.
     .pipe( gulp.dest( jsVendorDestination ) )
@@ -276,6 +302,31 @@ gulp.task( 'browser-sync', function() {
         } ) )
     .pipe(gulp.dest( imagesDestination ))
     .pipe( notify( { message: 'TASK: "images" Completed! 💯', onLast: true } ) );
+ });
+
+
+ gulp.task('copy', function() {
+    gulp.src( basePaths.node + 'particles.js/*.js' )
+        .pipe( gulp.dest(productURL + 'js/vendor' ));
+
+    gulp.src( basePaths.node + 'particles.js/demo/*.json' )
+        .pipe( gulp.dest(productURL + 'js/' ));
+
+    gulp.src( basePaths.node + 'particles.js/demo/js/*.js' )
+        .pipe( gulp.dest(productURL + 'js/custom' ))
+        .pipe( notify( { message: 'TASK: "Copy Node Assets" Completed! 💯', onLast: true } ) );
+
+ });
+
+ gulp.task('copy-one', function() {
+
+   gulp.src( basePaths.node + 'materialize-css/dist/js/*.js' )
+       .pipe( gulp.dest(productURL + 'js/vendor' ));
+
+    gulp.src( basePaths.node + 'materialize-css/dist/css/*.css' )
+        .pipe( gulp.dest(productURL + 'assets/css' ))
+        .pipe( notify( { message: 'TASK: "Copy-One Node Assets" Completed! 💯', onLast: true } ) );
+
  });
 
  /**

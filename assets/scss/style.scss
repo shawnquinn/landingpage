@@ -1,4 +1,5 @@
 @import 'variables';
+@import 'mixins';
 
 /*
  * Globals
@@ -35,12 +36,13 @@ html {
   background-color: #fff;
 }
 
-
 body {
   text-align: center;
   color: #fff;
   text-shadow: 0 0.05rem 0.1rem rgba(0,0,0,0.5);
-  background: #fff url("../img/dsg-bg.jpg") center/cover no-repeat;
+  background: #fff url("../img/dsg-bg.jpg") center center no-repeat;
+  //background: #fff;
+  background-size: cover;
   font-family: $font-body;
 }
 /* Extra markup and styles for table-esque vertical and horizontal centering */
@@ -126,11 +128,24 @@ body {
  */
 .cover {
   padding: 0 1.5rem;
+  &-heading {
+    font-family: $font-header;
+    letter-spacing: 1px;
+  }
 }
 
-.cover .btn-lg {
-  font-weight: bold;
-  padding: 0.75rem 1.25rem;
+.cover {
+  .btn {
+    &-lg {
+      font-weight: bold;
+      padding: 0.75rem 1.25rem;
+    }
+    &-large {
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
 }
 /*
  * Footer
@@ -170,4 +185,25 @@ body {
   .masthead {
     width: 42rem;
   }
+}
+
+canvas {
+  display: block;
+  vertical-align: bottom;
+}
+
+/* ---- particles.js container ---- */
+
+#particles-js {
+  position: absolute;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  background-image: url("");
+  @include gradient(0deg, rgba(darken(#5EC1CC, 20%),0.2) 0%, rgba(#5EC1CC, 0.5) 50%);
+  //background-color: #5EC1CC;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+  top: 0;
 }

@@ -125,9 +125,3 @@ particlesJS('particles-js',
 }
 
 );
-
-( function( $ ) {
-
-
-
-} )( jQuery );

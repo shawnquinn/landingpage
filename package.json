@@ -19,5 +19,9 @@
     "gulp-uglify": "^1.5.3",
     "gulp-uglifycss": "^1.0.6",
     "gulp-sort": "^2.0.0"
+  },
+  "dependencies": {
+    "materialize-css": "^0.100.2",
+    "particles.js": "^2.0.0"
   }
 }
