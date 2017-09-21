@@ -224,6 +224,10 @@ gulp.task( 'browser-sync', function() {
    var scripts = [
 
        // Start - All BS4 stuff
+       basePaths.jsVendor + 'popper.min.js',
+       // End - All BS4 stuff
+
+       // Start - All BS4 stuff
        basePaths.jsVendor + 'bootstrap.min.js',
        // End - All BS4 stuff
 
