@@ -231,13 +231,13 @@ body {
   }
 
   to {
-    background-position: 10000px;
+    background-position: 4500px;
   }
 }
 
 .infinite-spin {
-  -webkit-animation: infinitespin 4s infinite linear;
-  animation: infinitespin 4s infinite linear;
+  -webkit-animation: infinitespin 10s infinite linear;
+  animation: infinitespin 10s infinite linear;
 }
 @-webkit-keyframes infinitespin {
   from {
@@ -344,6 +344,7 @@ canvas {
     margin-right: auto;
     margin-left: auto;
     color: rgba($vma-sea, .7);
+    z-index: 5;
   }
 
   // Letter M
@@ -356,6 +357,7 @@ canvas {
     margin-right: auto;
     margin-left: auto;
     color: rgba($vma-gold, .7);
+    z-index: 5;
   }
 
   // Letter A
@@ -376,19 +378,39 @@ canvas {
     z-index: 4;
     top: 255px !important;
   }
-
-  // Zigs!
-  #zigzag {
-    background-image: url('img/svg/zigzag.svg');
-    background-position: -100px 0;
-    background-repeat: repeat-x;
-    position: absolute !important;
-    height: 100%;
-    width: 100%;
+}
+// Zigs!
+#zigzag {
+  background-image: url('img/svg/zigzag.svg');
+  background-position: 0 0;
+  background-repeat: repeat-x;
+  position: absolute !important;
+  height: 200px;
+  width: 100%;
+  z-index: 3;
+  top: 0px !important;
+  &.squig1 {
+    top: 33% !important;
+    height: 50px;
+    width: 200px;
+  }
+  &.squig2 {
+    height: 100px;
+    width: 300px;
+    top: initial !important;
+    bottom: 0 !important;
+    left: 25% !important;
     z-index: 4;
-    top: 0px !important;
+  }
+  &.squig3 {
+    position: relative !important;
+    height: 9px;
+    width: 50%;
+    margin: 0 auto;
+    z-index: 99;
   }
 }
+
 /* ---- particles.js container ---- */
 #particles-js {
   position: absolute;

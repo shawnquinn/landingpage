@@ -24,7 +24,7 @@ body{font-family:"Raleway",sans-serif;text-align:center;color:#fff;background:#f
 .cover p.email{text-shadow:none}
 .mastfoot{color:rgba(255,255,255,0.5)}
 .infinite-right{-webkit-animation:moveright 60s linear infinite;animation:moveright 60s linear infinite}
-.infinite-spin{-webkit-animation:infinitespin 4s infinite linear;animation:infinitespin 4s infinite linear}
+.infinite-spin{-webkit-animation:infinitespin 10s infinite linear;animation:infinitespin 10s infinite linear}
 .infinite-grow{-webkit-animation:infinitegrow 3.33s infinite linear;animation:infinitegrow 3.33s infinite linear}
 .infinite-opacity{-webkit-animation:opac 3.33s infinite linear;animation:opac 3.33s infinite linear}
 .infinite-both{-webkit-animation:opac 3.33s infinite linear,infinitegrow 3.33s infinite linear;animation:opac 3.33s infinite linear,infinitegrow 3.33s infinite linear}
@@ -32,11 +32,14 @@ canvas{display:block;vertical-align:bottom}
 .parallax-scene{position:absolute;top:0;overflow:hidden;width:100%;height:100%;text-shadow:none;z-index:9}
 .parallax-scene .layer{font-family:"Playfair Display",serif;font-size:172px;font-weight:bold;position:absolute !important}
 .parallax-scene #one{font-size:350px;top:initial !important;right:10% !important;bottom:-200px !important;left:initial !important;z-index:5;color:rgba(6,52,72,0.5)}
-.parallax-scene #two{font-size:400px;top:-150px !important;right:initial !important;bottom:initial !important;left:-50px !important;margin-right:auto;margin-left:auto;color:rgba(29,116,128,0.7)}
-.parallax-scene #three{font-size:300px;top:0 !important;right:0 !important;bottom:initial !important;left:initial !important;margin-right:auto;margin-left:auto;color:rgba(167,160,70,0.7)}
+.parallax-scene #two{font-size:400px;top:-150px !important;right:initial !important;bottom:initial !important;left:-50px !important;margin-right:auto;margin-left:auto;color:rgba(29,116,128,0.7);z-index:5}
+.parallax-scene #three{font-size:300px;top:0 !important;right:0 !important;bottom:initial !important;left:initial !important;margin-right:auto;margin-left:auto;color:rgba(167,160,70,0.7);z-index:5}
 .parallax-scene #four{top:initial !important;right:initial !important;bottom:0 !important;left:0 !important;margin-right:auto;margin-left:auto;color:rgba(94,193,204,0.9);z-index:5}
 .parallax-scene #five{position:relative !important;z-index:4;top:255px !important}
-.parallax-scene #zigzag{background-image:url("img/svg/zigzag.svg");background-position:-100px 0;background-repeat:repeat-x;position:absolute !important;height:100%;width:100%;z-index:4;top:0 !important}
+#zigzag{background-image:url("img/svg/zigzag.svg");background-position:0 0;background-repeat:repeat-x;position:absolute !important;height:200px;width:100%;z-index:3;top:0 !important}
+#zigzag.squig1{top:33% !important;height:50px;width:200px}
+#zigzag.squig2{height:100px;width:300px;top:initial !important;bottom:0 !important;left:25% !important;z-index:4}
+#zigzag.squig3{position:relative !important;height:9px;width:50%;margin:0 auto;z-index:99}
 #particles-js{position:absolute;z-index:3;top:0;width:100%;height:100%;background-image:url("");background-repeat:no-repeat;background-position:50% 50%;background-size:cover;background:rgba(255,255,255,0) 0;background:-webkit-linear-gradient(0,rgba(255,255,255,0) 0,rgba(255,255,255,0) 50%);background:-webkit-linear-gradient(bottom,rgba(255,255,255,0) 0,rgba(255,255,255,0) 50%);background:linear-gradient(0,rgba(255,255,255,0) 0,rgba(255,255,255,0) 50%)}
 @media(min-width:0){.masthead{position:fixed;top:0}
 .mastfoot{position:fixed;bottom:0}
@@ -50,7 +53,7 @@ canvas{display:block;vertical-align:bottom}
 .parallax-scene .layer{font-size:100px !important}
 .parallax-scene #one{bottom:0 !important}
 }@-webkit-keyframes moveright{from{background-position:0 0}
-to{background-position:10000px}
+to{background-position:4500px}
 }@-webkit-keyframes infinitespin{from{-webkit-transform:rotate(0);transform:rotate(0)}
 to{-webkit-transform:rotate(360deg);transform:rotate(360deg)}
 }@-webkit-keyframes infinitegrow{0%{-webkit-transform:scale(1);transform:scale(1)}
