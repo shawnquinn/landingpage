@@ -47,7 +47,7 @@ var styleDestination        = './'; // Path to place the compiled CSS file.
 // JS Vendor related.
 var jsVendorSRC             = [
                             './js/vendor/*.js', // Path to JS vendor folder.
-                            basePaths.node + 'particle.js/particle.js' // Yummy particles
+                            basePaths.node + 'particle.js/particle.js', // Yummy particles
 ];
 
 var jsVendorDestination     = './js/'; // Path to place the compiled JS vendors file.
@@ -232,6 +232,9 @@ gulp.task( 'browser-sync', function() {
        // Particles. Yum.
        basePaths.jsVendor + 'particles.js',
 
+       // Parallax. Move baby!
+       basePaths.jsVendor + 'parallax.min.js',
+
       //basePaths.jsVendor + 'materialize.min.js',
 
 
@@ -326,7 +329,13 @@ gulp.task( 'browser-sync', function() {
     gulp.src( basePaths.node + 'materialize-css/dist/css/*.css' )
         .pipe( gulp.dest(productURL + 'assets/css' ))
         .pipe( notify( { message: 'TASK: "Copy-One Node Assets" Completed! 💯', onLast: true } ) );
+ });
 
+ gulp.task('copy-parallax', function() {
+
+   gulp.src( basePaths.node + 'parallax-js/dist/*.js' )
+       .pipe( gulp.dest(productURL + 'js/vendor' ))
+       .pipe( notify( { message: 'TASK: "Copy-parallax Node Assets" Completed! 💯', onLast: true } ) );
  });
 
  /**
